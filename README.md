@@ -1,23 +1,112 @@
-# IMPORTANT LINK FOR PROJECT
+# Token Stacking Dapp
 
-@theblockchaincoders
+Building a Token Stacking Dapp from Scratch | Become a Defi Developer by Building Stacking Dapp
 
-Build your web3 Dapp "Token Stacking Dapp Project", in which you can provide users to stack their ERC20 token and earn reward, you can also provide multiple token stacking contract.
+Building Your Own Token Stacking DApp: Become a DeFi Developer. Step into the world of decentralized finance (DeFi) by embarking on a journey to build your very own Token Stacking DApp from scratch. This comprehensive tutorial will guide you through the process of creating a decentralized application (DApp) that allows users to stake tokens and earn rewards, all while gaining valuable insights into the DeFi ecosystem
 
-Watch video:
+## Project Overview
 
-Resource
+![alt text](https://www.daulathussain.com/wp-content/uploads/2023/07/token-sgtacking-dapp-project.jpg)
 
-Final-Code: https://www.theblockchaincoders.com/sourceCode/build-token-stacking-dapp-from-scratch
+## Instruction
 
-Starter-file: [https://github.com/daulathussain/nfts-api-starter-file](https://github.com/daulathussain/token-stacking-dapp-starter-file)
+Kindly follow the following Instructions to run the project in your system and install the necessary requirements
 
-Get Pro Course "AI Movie APP": https://bit.ly/AI-Movie-App-Course
 
-Support Creator: https://bit.ly/Support-Creator
+- [Final Source Code](https://www.theblockchaincoders.com/sourceCode/build-token-stacking-dapp-from-scratch)
 
-All Projects Source Code: https://www.theblockchaincoders.com/SourceCode
+#### Setup Video
+- [Final Code Setup video](https://youtu.be/LacIYJQ-VWE?si=gOyUFwMItV9GYuAK)
 
-Official Website: https://www.theblockchaincoders.com
+```https://code.visualstudio.com/download
+  WATCH: Setup & Demo Of Project
+```
 
-Book 1 -1 Appointment: https://bit.ly/Book-1-1-Appointment
+#### Install Vs Code Editor
+
+```https://code.visualstudio.com/download
+  GET: VsCode Editor
+```
+
+#### NodeJs & NPM Version
+
+```https://nodejs.org/en/download
+  NodeJs: v18.12.1
+  NPM: 8.19.2
+```
+
+#### Clone Starter File
+
+```https://github.com/daulathussain/Airdrop-Crypto-Starter-File
+  GET: Project Starter File Download
+```
+
+
+All you need to follow the complete project and follow the instructions which are explained in the tutorial by Daulat
+
+## Final Code Instruction
+
+If you download the final source code then you can follow the following instructions to run the Dapp successfully
+
+#### Setup Video
+
+```https://code.visualstudio.com/download
+  WATCH: Setup & Demo Of Project
+```
+
+#### Final Source Code
+
+```https://www.theblockchaincoders.com/SourceCode
+  Download the Final Source Code
+```
+
+#### Install Vs Code Editor
+
+```https://code.visualstudio.com/download
+  GET: VsCode Editor
+```
+
+#### NodeJs & NPM Version
+
+```https://nodejs.org/en/download
+  NodeJs: v18.12.1
+  NPM: 8.19.2
+```
+
+
+#### Test Faucets
+
+Alchemy will provide you with some free test faucets which you can transfer to your wallet address for deploying the contract
+
+```https://www.alchemy.com/faucets
+  Get: Free Test Faucets
+```
+
+#### RemixID
+
+We are using RemixID for deploying the contract and generation of the ABI in the project, but you can use any other tools like Hardhat, etc.
+
+```https://remix-project.org
+  OPEN: RemixID
+```
+
+#### Polygon Mumbai
+
+```https://mumbai.polygonscan.com/
+  OPEN: Polygon Mumbai
+```
+
+## Important Links
+
+- [Get Pro Blockchain Developer Course](https://www.theblockchaincoders.com/pro-nft-marketplace)
+- [Support Creator](https://bit.ly/Support-Creator)
+- [All Projects Source Code](https://www.theblockchaincoders.com/SourceCode)
+
+
+## Authors
+
+- [@theblockchaincoders.com](https://www.theblockchaincoders.com/)
+- [@consultancy](https://www.theblockchaincoders.com/consultancy)
+- [@youtube](https://www.youtube.com/@daulathussain)
+
+
