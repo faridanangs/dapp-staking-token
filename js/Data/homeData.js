@@ -40,23 +40,23 @@ const upcoming = [
 const IGO = [1, 2, 3, 4, 5];
 const users = [
   {
-    name: "Shoaib Bhai",
+    name: "Jokoko",
     role: "scientist",
   },
   {
-    name: "Daulat",
+    name: "Temlep",
     role: "Coder",
   },
   {
-    name: "Shanawaz",
+    name: "Wira",
     role: "Doctor",
   },
   {
-    name: "Md Faiz",
-    role: "Doctor",
+    name: "Usman",
+    role: "Hikam",
   },
   {
-    name: "Tajuddin",
+    name: "Umar",
     role: "Business",
   },
 ];

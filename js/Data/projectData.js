@@ -1,26 +1,26 @@
 const projectContract = [
   {
-    name: "Shoaib Bhai",
+    name: "Jokoko",
     id: 1,
     icon: "ethereum",
   },
   {
-    name: " Hussain",
+    name: " Temlep",
     id: 2,
     icon: "ethereum",
   },
   {
-    name: " Blockchain ",
+    name: "Jololo",
     id: 3,
     icon: "solana",
   },
   {
-    name: "Rahul",
+    name: "Wira",
     id: 4,
     icon: "ethereum-gold",
   },
   {
-    name: "Time Boom",
+    name: "Tokoitoki",
     id: 5,
     icon: "binance",
   },

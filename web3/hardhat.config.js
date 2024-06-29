@@ -1,16 +1,16 @@
 require("@nomicfoundation/hardhat-toolbox");
 
 /** @type import('hardhat/config').HardhatUserConfig */
-const PRIVATE_KEY = "YOUR ADDRESS";
-const RPC_URL = "https://rpc.ankr.com/polygon_mumbai";
+const PRIVATE_KEY = "983833d689e1a9481c585d846a50676cea2825bbbdcd5c0e2f624a13d54c0455";
+const RPC_URL = "https://polygon-amoy.drpc.org";
 module.exports = {
-  defaultNetwork: "polygon_mumbai",
+  defaultNetwork: "polygon_amoy",
   networks: {
     hardhat: {
-      chainId: 80001,
+      chainId: 80002,
     },
-    polygon_mumbai: {
-      url: "https://rpc.ankr.com/polygon_mumbai",
+    polygon_amoy: {
+      url: "https://polygon-amoy.drpc.org",
       accounts: [`0x${PRIVATE_KEY}`],
     },
   },
