@@ -122,197 +122,6 @@ contract TokenStaking is Initializable, Ownable, ReentrancyGuard {
         _earlyUnstakeFeePercentage = earlyUnstakeFeePercentage_;
     }
 
-    //
-    // /// View method start
-    //
-
-    /**
-     * @notice this function is used to get the minimum staking amount
-     */
-    function getMinimumStakingAmount() external view returns (uint256) {
-        return _minimumStakingAmount;
-    }
-
-    /**
-     * @notice this function is used to get the maximum staking amount
-     */
-    function getMaxStakingTokenLimit() external view returns (uint256) {
-        return _maxStakeTokenLimit;
-    }
-
-    /**
-     * @notice this function is used to get the staking start date
-     */
-    function getStakeStartDate() external view returns (uint256) {
-        return _stakeStartDate;
-    }
-
-    /**
-     * @notice this function is used to get the staking end date
-     */
-    function getStakeEndDate() external view returns (uint256) {
-        return _stakeEndDate;
-    }
-
-    /**
-     * @notice this function is used to get the total of tokens are staked
-     */
-    function getTotalStakedToken() external view returns (uint256) {
-        return _totalStakedTokens;
-    }
-
-    /**
-     * @notice this function is used to get the total of users
-     */
-    function getTotalUsers() external view returns (uint256) {
-        return _totalusers;
-    }
-
-    /**
-     * @notice this function is used to get the stake days
-     */
-    function getStakeDays() external view returns (uint256) {
-        return _stakeDays;
-    }
-
-    /**
-     * @notice this function is used to get early unstake fee percentage
-     */
-    function getEarlyUnstkeFeePercentage() external view returns (uint256) {
-        return _earlyUnstakeFeePercentage;
-    }
-
-    /**
-     * @notice this function is used to get staking status
-     */
-    function getStakingStatus() external view returns (bool) {
-        return _isStakingPaused;
-    }
-
-    /**
-     * @notice this function is used to get the current apy rate
-     */
-    function getApy() external view returns (uint256) {
-        return _apyRate;
-    }
-
-    /**
-     * @notice this function is used to get msg.sender estimated reward amount
-     * @return msg.sender's estimated reward amount
-     */
-    function getUserEstimatedRewards() external view returns (uint256) {
-        (uint256 amount, ) = _getUserEstimatedRewards(msg.sender);
-        return _users[msg.sender].rewardAmount + amount;
-    }
-
-    /**
-     * @notice this function is used to get withdrawable amount from contract
-     */
-    function getWithdrawableAmount() external view returns (uint256) {
-        return
-            IERC20(_tokenAddress).balanceOf(address(this)) - _totalStakedTokens;
-    }
-
-    /**
-     * @notice this function is used to get user's details
-     * @param userAddress User's address to get details of
-     * @return User struct
-     */
-    function getUser(address userAddress) external view returns (User memory) {
-        return _users[userAddress];
-    }
-
-    /**
-     * @notice this function is used to check if a user is a stakeholder
-     * @param _user address of the user to check
-     * @return True is user is a stakeholder, false otherwise
-     */
-    function isStakeHolder(address _user) external view returns (bool) {
-        return _users[_user].stakeAmount != 0;
-    }
-
-    //
-    // /// View method end
-    //
-
-    //
-    // /// Owner method start
-    //
-
-    /**
-     * @notice this function is used to update minimum staking amount
-     */
-    function updateMinStakingAmount(uint256 newAmount) external onlyOwner {
-        _minimumStakingAmount = newAmount;
-    }
-
-    /**
-     * @notice this function is used to update maximum staking amount
-     */
-    function updateMaxStakingAmount(uint256 newAmount) external onlyOwner {
-        _maxStakeTokenLimit = newAmount;
-    }
-
-    /**
-     * @notice this function is used to update staking end date
-     */
-    function updateStakingEndDate(uint256 newdate) external onlyOwner {
-        _stakeEndDate = newdate;
-    }
-
-    /**
-     * @notice this function is used to update early unstake fee percentage
-     */
-    function updateEarlyUnstakePercentage(
-        uint256 newPercentage
-    ) external onlyOwner {
-        _earlyUnstakeFeePercentage = newPercentage;
-    }
-
-    /**
-     * @notice stake tokens for specific user
-     * @dev This function can be used to stake tokens for specific user
-     *
-     * @param amount the amount to stake
-     * @param user user's address
-     */
-    function stakeForUser(
-        uint256 amount,
-        address user
-    ) external onlyOwner nonReentrant {
-        _stakeTokens(amount, user);
-    }
-
-    /**
-     * @notice enable/disable staking
-     * @dev this function can be used to toggle staking status
-     */
-    function toggleStakingStatus() external onlyOwner {
-        _isStakingPaused = !_isStakingPaused;
-    }
-
-    /**
-     * @notice withdraw the specific amoint if possible
-     * @dev This function can be used to withdraw the available tokens with this contract to teh caller
-     *
-     * @param amount the amount to stake
-     */
-    function withdraw(uint256 amount) external onlyOwner nonReentrant {
-        require(
-            this.getWithdrawableAmount() >= amount,
-            "Tokenstaking: not enought withdrawable tokens"
-        );
-        IERC20(_tokenAddress).transfer(msg.sender, amount);
-    }
-
-    //
-    // /// Owner methods end
-    //
-
-    //
-    // /// User methods start
-    //
-
     /**
      * @notice this function is used to stake tokens
      * @param _amount Amount of tokens to be staked
@@ -363,6 +172,15 @@ contract TokenStaking is Initializable, Ownable, ReentrancyGuard {
         );
 
         emit Stake(user_, _amount);
+    }
+
+    /**
+     * @notice this function is used to check if a user is a stakeholder
+     * @param _user address of the user to check
+     * @return True is user is a stakeholder, false otherwise
+     */
+    function isStakeHolder(address _user) external view returns (bool) {
+        return _users[_user].stakeAmount != 0;
     }
 
     /**
@@ -435,13 +253,6 @@ contract TokenStaking is Initializable, Ownable, ReentrancyGuard {
         emit ClaimReward(msg.sender, rewardAmount);
     }
 
-    //
-    // /// User methods end
-    //
-
-    //
-    // /// Private helper methods start
-    //
 
     /**
      * @notice This function is used to calculate reward for a user
