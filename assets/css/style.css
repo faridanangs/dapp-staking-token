@@ -3535,3 +3535,7 @@ a.page-numbers:hover {
 .contract-paragraph {
   width: 80%;
 }
+
+.bg-header {
+  background-color: #eeeeee;
+}
