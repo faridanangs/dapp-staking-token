@@ -70,8 +70,8 @@
   --nav-brand-height: 55px;
   --top-nav-item-color: #f5f5f5;
   --nav-item-color: #121117;
-  --primary-color: #0047ff;
-  --secondary-color: #57048a;
+  --primary-color: #2a50ae;
+  --secondary-color: #402153;
   --white-color: #f9f9f9;
   --black-color: #040402;
   --grey-color: #f3f5f7;
@@ -3534,8 +3534,4 @@ a.page-numbers:hover {
 
 .contract-paragraph {
   width: 80%;
-}
-
-.bg-header {
-  background-color: #eeeeee;
 }

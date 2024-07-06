@@ -39,6 +39,7 @@ async function commonInjectedConnect(_provider, _providerName) {
 
     // get connected chain id from ethereum node
     let currentNetworkId = await web3.eth.getChainId();
+    console.log(currentNetworkId, "networkid", _NETWORK_ID)
     currentNetworkId = currentNetworkId.toString();
     console.log("network: ", currentNetworkId);
 
@@ -48,7 +49,7 @@ async function commonInjectedConnect(_provider, _providerName) {
 
     currentAddress = accounts[0].toLowerCase();
 
-    if (currentNetworkId !== _NETWORK_ID) {
+    if (currentNetworkId != _NETWORK_ID) {
         notyf.error(`Please connect wallet on ${SELECT_CONTRACT[_NETWORK_ID].network_name}`)
         return false;
     }
@@ -143,7 +144,7 @@ function getSelectedTab(sClass) {
 
 function getContractObj(sClass) {
     return new web3.eth.Contract(
-        SELECT_CONTRACT[_NETWORK_ID].STACKING.abi,
-        SELECT_CONTRACT[_NETWORK_ID].STACKING[sClass].address
+        SELECT_CONTRACT[_NETWORK_ID].STAKING.abi,
+        SELECT_CONTRACT[_NETWORK_ID].STAKING[sClass].address
     );
 }

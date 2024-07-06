@@ -18,11 +18,14 @@ async function loadInitialData(sClass) {
 
     try {
         clearInterval(countDownGlobal);
-
+        
+        
         let cObj = new web3Main.eth.Contract(
-            SELECT_CONTRACT[_NETWORK_ID].STACKING.abi,
-            SELECT_CONTRACT[_NETWORK_ID].STACKING[sClass].address
+            SELECT_CONTRACT[_NETWORK_ID].STAKING.abi,
+            SELECT_CONTRACT[_NETWORK_ID].STAKING[sClass].address
         )
+        
+        console.log(cObj,"OBJJJ")
 
         // ID ELEMENT DATA
         let totalUsers = await cObj.methods.getTotalUsers().call();
@@ -87,9 +90,9 @@ async function loadInitialData(sClass) {
 
         let stakeDays = await cObj.methods.getStakeDays().call();
 
-        let days = Math.floor(Number(stakeDays) / (3600 * 24));
+        let days = Number(stakeDays)
 
-        let dayDisplay = days > 0 ? days + (days == 1 ? "day," : "days,") : "";
+        let dayDisplay = days > 0 ? days + (days == 1 ? " day," : " days,") : "";
 
         document.querySelectorAll(".Lock-period-value").forEach((e) => e.innerHTML = `${dayDisplay}`)
 
@@ -98,7 +101,7 @@ async function loadInitialData(sClass) {
         document.getElementById("user-reward-balance-value").value = `Reward: ${rewardBal / 10 ** 18} ${SELECT_CONTRACT[_NETWORK_ID].TOKEN.symbol}`
 
         // User Token Balance
-        let balMainUser = currentAddress ? await cObj.methods.balanceOf(currentAddress).call() : ""
+        let balMainUser = currentAddress ? await oContractToken.methods.balanceOf(currentAddress).call() : ""
 
         balMainUser = Number(balMainUser) / 10 ** 18;
 
@@ -153,6 +156,7 @@ function generateCountDown(ele, clainDate) {
     // set the date we're counting down to
     var countDownDate = new Date(clainDate).getTime();
 
+    console.log(countDownDate, "now date")
     // update the count down every 1 second
     countDownGlobal = setInterval(() => {
         var now = new Date().getTime();
@@ -213,6 +217,7 @@ async function stackTokens() {
         balMainUser = Number(balMainUser) / 10 ** 18;
 
         console.log("balMainUser: " + balMainUser);
+        console.log("nToken: " + nToken);
 
         if (balMainUser < nToken) {
             notyf.error(`Insufficient Token Amount on ${SELECT_CONTRACT[_NETWORK_ID].network_name}.\nPlease buy some tokens first`)
@@ -224,8 +229,12 @@ async function stackTokens() {
 
         let balMainAllowance = await oContractToken.methods.allowance(
             currentAddress,
-            SELECT_CONTRACT[_NETWORK_ID].STACKING[sClass].address
-        )
+            SELECT_CONTRACT[_NETWORK_ID].STAKING[sClass].address
+        ).call();
+
+        console.log("allowance: " + balMainAllowance);
+        console.log("sClas sevendays: " + SELECT_CONTRACT[_NETWORK_ID].STAKING[sClass].address);
+        
 
         if (Number(balMainAllowance) < Number(tokenToTransfer)) {
             approveTokenSpend(tokenToTransfer, sClass);
@@ -327,6 +336,7 @@ async function stackTokenMain(_amount_wei, sClass) {
 
         console.log("Transaction History", transactionHistory);
         window.location.href = "http://localhost:5500/analytic.html";
+        
     }).on("transactionHash", (hash) => {
         console.log("transactionHash", hash);
     }).catch(error => {
@@ -359,7 +369,9 @@ async function unstakeTokens() {
 
         let balMainUser = await oContractStaking.methods.getUser(currentAddress).call();
 
-        balMainUser = Number(balMainUser.stakeAmount) / 10 ** 18;
+        balMainUser = Number(balMainUser.stakeAmount);
+
+        console.log(balMainUser, "bal main", tokenToTransfer)
 
         if (balMainUser < tokenToTransfer) {
             notyf.error(`Insufficient Token Amount on ${SELECT_CONTRACT[_NETWORK_ID].network_name}.\nPlease stake some tokens first`)
