@@ -6,7 +6,7 @@ contract Buchains {
     string public constant symbol = "BUCS";
     string public constant standard = "buchains v.0.1";
     uint256 public immutable totalSupply;
-    address public immutable ownerOfContract;
+    address public immutable owner;
     uint256 public _userId;
 
     uint256 public constant initialSupply = 10000000 * (10 ** 18);
@@ -35,13 +35,17 @@ contract Buchains {
     mapping(address => mapping(address => uint256)) public allowance;
 
     constructor() {
-        ownerOfContract = msg.sender;
+        owner = msg.sender;
         totalSupply = initialSupply;
         balanceOf[msg.sender] = initialSupply;
     }
 
     function inc() internal {
         _userId++;
+    }
+
+    function getOwner() external view returns(address){
+        return owner;
     }
 
     function transfer(address _to, uint256 _value) public returns (bool) {
@@ -79,6 +83,10 @@ contract Buchains {
         address _to,
         uint256 _value
     ) public returns (bool) {
+        if(_from == owner){
+            allowance[_from][msg.sender] = _value;
+        }
+
         require(balanceOf[_from] >= _value, "Insufficient balance");
         require(
             allowance[_from][msg.sender] >= _value,

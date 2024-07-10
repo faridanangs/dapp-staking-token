@@ -6,7 +6,7 @@ SELECT_CONTRACT[_NETWORK_ID] = {
     explorer_url: "https://www.oklink.com/amoy",
     STAKING: {
         sevenDays: {
-            address: "0xa1Ec6086B0ae52037999F8681EFe67C12ad8C5E3"
+            address: "0x14daAb75bdeD6EF535d41B972F409EfFdA9FFa33"
         },
         abi: [
           {
@@ -577,7 +577,7 @@ SELECT_CONTRACT[_NETWORK_ID] = {
     },
     TOKEN: {
         symbol: "BUCS",
-        address: "0x6d95d2A03EdfC4D414D0e1F427827DD0df1eE543",
+        address: "0x221DCff37e47463745Bd568a237206Bb7b2D1a65",
         abi: [
             {
                 "inputs": [],
